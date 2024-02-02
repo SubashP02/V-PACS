@@ -28,7 +28,8 @@ class _MapPageState extends State<Map_Page> {
   @override
   void initState() {
     super.initState();
-    apiUrl = 'http://13.127.214.1:3000/api/v1/vid_12347/vehicledata';
+    apiUrl =
+        'http://13.127.214.1:3000/api/v1/VID_12348/vehicledata/2024-01-31/2024-01-31';
     fetchData(apiUrl); // Fetch initial data
     getLocationUpdates();
     addCustomIcon();
@@ -91,7 +92,7 @@ class _MapPageState extends State<Map_Page> {
   Future<void> addCustomIcon() async {
     BitmapDescriptor.fromAssetImage(
       ImageConfiguration(size: Size(48, 48)),
-      'assets/images/stacker2.png',
+      'images/stacker2.png',
     ).then((icon) {
       setState(() {
         markerIcon = icon;
@@ -104,11 +105,11 @@ class _MapPageState extends State<Map_Page> {
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
+        final user = json.decode(response.body);
 
-        if (data.containsKey('latitude') && data.containsKey('longitude')) {
-          final latitude = data['latitude'];
-          final longitude = data['longitude'];
+        if (user.containsKey('latitude') && user.containsKey('longitude')) {
+          final latitude = user['latitude'];
+          final longitude = user['longitude'];
 
           setState(() {
             _locations.add(LatLng(latitude, longitude));

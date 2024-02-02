@@ -31,6 +31,19 @@ class BatteryVoltageGauge extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+            top: MediaQuery.of(context).size.height * 0.23,
+            right: MediaQuery.of(context).size.width * 0.375,
+            child: Text(
+              "0     100",
+              style: TextStyle(
+                fontSize: 10,
+                color: Color.fromARGB(221, 156, 155, 155),
+                fontWeight: FontWeight.w500,
+                decoration: TextDecoration.underline,
+                decorationColor: const Color.fromARGB(255, 253, 253, 253),
+              ),
+            ))
       ],
     );
   }
